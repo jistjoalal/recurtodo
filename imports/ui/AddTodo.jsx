@@ -1,7 +1,5 @@
 import React from 'react';
 
-import Todos from '../api/todos';
-
 export default class AddTodo extends React.Component {
   constructor() {
     super();
@@ -14,25 +12,43 @@ export default class AddTodo extends React.Component {
   render() {
     const { text, num, time } = this.state;
     return (
-      <form onSubmit={this.submit}>
+      <form className="bg-light p-2" onSubmit={this.submit}>
+
+        <h2>New Todo</h2>
 
         <div className="form-group">
           <label>Todo</label>
-          <input type="text" ref="text" placeholder="Todo" value={text}
+          <input
+            className="form-control"
+            type="text"
+            ref="text"
+            placeholder="Todo"
+            value={text}
             onChange={this.change('text')}
           />
         </div>
         
         <div className="form-group">
           <label>#</label>
-          <input type="number" ref="num" placeholder="#" value={num} min={1}
+          <input
+            className="form-control"
+            type="number"
+            ref="num"
+            placeholder="#"
+            value={num}
+            min={1}
             onChange={this.change('num')}
           />
         </div>
 
         <div className="form-group">
           <label>time</label>
-          <select ref="time" value={time} onChange={this.change('time')}>
+          <select
+            className="form-control"
+            ref="time"
+            value={time}
+            onChange={this.change('time')}
+          >
             <option value="day">Day(s)</option>
             <option value="week">Week(s)</option>
             <option value="month">Month(s)</option>

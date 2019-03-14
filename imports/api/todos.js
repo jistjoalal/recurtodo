@@ -35,4 +35,7 @@ Meteor.methods({
       }
     });
   },
-})
+  'todos.remove'({ _id }) {
+    Todos.remove({ _id });
+  },
+});

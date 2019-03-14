@@ -7,11 +7,18 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>RecurTodo</h1>
 
-        <AddTodo />
+        <div className="navbar bg-secondary text-dark">
+          <h1>RecurTodo</h1>
+        </div>
 
-        <TodoList />
+        <div className="container bg-dark p-2">
+
+          <AddTodo />
+
+          <TodoList />
+
+        </div>
 
       </div>
     )

@@ -8,8 +8,8 @@ import Todo from './Todo';
 class TodoList extends React.Component {
   render() {
     return (
-      <div>
-        <h2>todo list</h2>
+      <div className="bg-light p-2">
+        <h2>Todo List</h2>
         { this.renderTodos() }
       </div>
     );
