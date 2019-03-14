@@ -89,6 +89,11 @@ export default class AddTodo extends React.Component {
     })
   }
   change = prop => _ => {
+    if (prop == 'num') {
+      return this.setState({
+        num: +this.refs.num.value,
+      });
+    }
     this.setState({
       [prop]: this.refs[prop].value,
     });
