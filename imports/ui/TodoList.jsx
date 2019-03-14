@@ -23,7 +23,13 @@ class TodoList extends React.Component {
 }
 
 export default withTracker(() => {
-  const todos = Todos.find().fetch();
+  const query = {};
+  const projection = {
+    sort: {
+      date: 1,
+    },
+  };
+  const todos = Todos.find(query, projection).fetch();
   return {
     todos,
   };

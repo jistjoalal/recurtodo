@@ -56,7 +56,9 @@ export default class AddTodo extends React.Component {
           </select>
         </div>
 
-        <button type="submit">Submit</button>
+        <button className="btn btn-dark" type="submit">
+          Submit
+        </button>
 
       </form>
     )
