@@ -9,7 +9,7 @@ export default class App extends React.Component {
       <div>
 
         <div className="navbar bg-secondary text-dark">
-          <h1>RecurTodo</h1>
+          <h1 className="text-nowrap text-monospace">Do _, Due _.</h1>
         </div>
 
         <div className="container bg-dark p-2">
