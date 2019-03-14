@@ -7,14 +7,21 @@ export default class AddTodo extends React.Component {
       text: '',
       num: 1,
       time: 'day',
+      err: '',
     };
   }
   render() {
-    const { text, num, time } = this.state;
+    const { text, num, time, err } = this.state;
     return (
       <form className="bg-light p-2" onSubmit={this.submit}>
 
         <h2>New Todo</h2>
+
+        {err &&
+          <p className="alert alert-warning">
+            {err}
+          </p>
+        }
 
         <div className="form-group">
           <label>Todo</label>
@@ -68,6 +75,7 @@ export default class AddTodo extends React.Component {
     const { text, num, time } = this.state;
     Meteor.call('todos.add', { text, num, time }, (err, res) => {
       if (err) {
+        this.setState({ err: err.reason });
         return console.log(err);
       }
       else {
@@ -75,6 +83,7 @@ export default class AddTodo extends React.Component {
           text: '',
           num: 1,
           time: 'day',
+          err: '',
         });
       }
     })

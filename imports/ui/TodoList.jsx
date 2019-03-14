@@ -23,6 +23,7 @@ class TodoList extends React.Component {
 }
 
 export default withTracker(() => {
+  Meteor.subscribe('todos');
   const query = {};
   const projection = {
     sort: {

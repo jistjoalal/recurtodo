@@ -7,7 +7,7 @@ Built w/ Meteor and React.
 
 
 ## ideas / todos
-- secure + pub/sub
+- <s>secure + pub/sub + simpleschema</s>
 - deploy
 - "last completed @"
 - visual timer

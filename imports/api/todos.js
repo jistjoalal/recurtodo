@@ -1,26 +1,46 @@
 import { Mongo } from 'meteor/mongo';
+import SimpleSchema from 'simpl-schema';
+
+import { dateFromNow } from './datecalc.js';
 
 export default Todos = new Mongo.Collection('todos');
 
-const DAY = 3600 * 24 * 1000;
-const WEEK = DAY * 7;
-const MONTH = WEEK * 4;
-const YEAR = DAY * 365;
-
-const UNITS = {
-  day: DAY,
-  week: WEEK,
-  month: MONTH,
-  year: YEAR,
-};
-
-const dateFromNow = (num, time) => {
-  const msFromNow = num * UNITS[time];
-  return Date.now() + msFromNow;
+if (Meteor.isServer) {
+  Meteor.publish('todos', _ => {
+    return Todos.find();
+  });
 }
+
+const SCHEMA = {
+  _id: {
+    type: String,
+  },
+  text: {
+    type: String,
+    min: 1,
+    max: 50,
+  },
+  num: {
+    type: Number,
+    min: 1,
+  },
+  time: {
+    type: String,
+  },
+  date: {
+    type: Number,
+  },
+};
 
 Meteor.methods({
   'todos.add'({ text, num, time }) {
+
+    new SimpleSchema({
+      text: SCHEMA.text,
+      num: SCHEMA.num,
+      time: SCHEMA.time,
+    }).validate({ text, num, time });
+
     Todos.insert({
       text,
       num,
@@ -29,6 +49,13 @@ Meteor.methods({
     });
   },
   'todos.complete'({ _id, num, time }) {
+
+    new SimpleSchema({
+      _id: SCHEMA._id,
+      num: SCHEMA.num, 
+      time: SCHEMA.time,
+    }).validate({ _id, num, time });
+
     Todos.update({ _id }, {
       $set: {
         date: dateFromNow(num, time),
@@ -36,6 +63,11 @@ Meteor.methods({
     });
   },
   'todos.remove'({ _id }) {
+    
+    new SimpleSchema({
+      _id: SCHEMA._id,
+    }).validate({ _id });
+
     Todos.remove({ _id });
   },
 });

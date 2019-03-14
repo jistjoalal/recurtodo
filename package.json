@@ -13,7 +13,8 @@
     "moment": "^2.24.0",
     "popper.js": "^1.14.7",
     "react": "^16.5.0",
-    "react-dom": "^16.5.0"
+    "react-dom": "^16.5.0",
+    "simpl-schema": "^1.5.5"
   },
   "meteor": {
     "mainModule": {
