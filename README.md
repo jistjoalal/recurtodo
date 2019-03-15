@@ -11,8 +11,8 @@ Built w/ Meteor and React.
 ## ideas / todos
 - <s>secure + pub/sub + simpleschema</s>
 - <s>deploy</s>
+- <s>highlight past-due-date todos</s>
 - todo edit action
 - "last completed @"
 - visual timer
 - seperate lists
-- highlight past-due-date todos

@@ -4,10 +4,13 @@ import moment from 'moment';
 export default class Todo extends React.Component {
   render() {
     const { text, date } = this.props.todo;
+    const pastDue = Date.now() > date;
+    const borderColor = pastDue ? 'danger' : 'light';
+    const textColor = pastDue ? 'dark font-weight-bold' : 'muted';
     return (
-      <div className="border shadow p-2 m-2">
+      <div className={`border-${borderColor} border shadow p-2 m-2`}>
         <p className="lead m-1">{text}</p>
-        <p className="text-muted m-1">
+        <p className={`text-${textColor} m-1`}>
           Due: {moment(date).fromNow()}
           {/* {date} */}
         </p>
