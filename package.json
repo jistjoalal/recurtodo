@@ -1,5 +1,5 @@
 {
-  "name": "recurtodo",
+  "name": "dodue",
   "private": true,
   "scripts": {
     "start": "meteor run",
